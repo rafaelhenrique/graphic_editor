@@ -15,6 +15,13 @@ def color_pixel(matrix, column, line, color):
     matrix[line][column] = color
 
 
+def draw_vertical(matrix, column, y1, y2, color):
+    column = int(column) - 1
+    y1 = int(y1) - 1
+    y2 = int(y2) - 1
+    matrix[y1:y2, column] = color
+
+
 def write_image(matrix, filename):
     np.savetxt(filename, matrix, delimiter="", fmt="%s")
 
@@ -51,4 +58,7 @@ def execute_commands(parsed_commands):
         if command_line[0] == "S" and len(command_line) == 2:
             filename = command_line[1]
             write_image(matrix, filename)
+        if command_line[0] == "V" and len(command_line) == 5:
+            column, y1, y2, color = command_line[1:]
+            draw_vertical(matrix, column, y1, y2, color)
     return True

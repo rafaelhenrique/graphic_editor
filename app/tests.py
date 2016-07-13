@@ -39,5 +39,8 @@ class TestGraphicEditor:
             ['I', '5', '6'],
             ['L', '2', '3', 'A'],
             ['S', 'one.bmp'],
+            ['G', '2', '3', 'J'],
+            ['V', '2', '3', '4', 'W'],
+            ['H', '3', '4', '2', 'Z'],
         ]
         assert app.execute_commands(parsed_commands)
