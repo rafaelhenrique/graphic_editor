@@ -9,6 +9,16 @@ def create_matrix(columns=0, lines=0):
     return np.array([line for _ in range(lines)])
 
 
+def color_pixel(matrix, column, line, color):
+    column = int(column) - 1
+    line = int(line) - 1
+    matrix[line][column] = color
+
+
+def write_image(matrix, filename):
+    np.savetxt(filename, matrix, delimiter="", fmt="%s")
+
+
 def read_command():
     """Read commands and return parsed lines"""
     commands = []
@@ -35,4 +45,10 @@ def execute_commands(parsed_commands):
         if command_line[0] == "I" and len(command_line) == 3:
             columns, lines = command_line[1:]
             matrix = create_matrix(columns, lines)
+        if command_line[0] == "L" and len(command_line) == 4:
+            column, line, color = command_line[1:]
+            color_pixel(matrix, column, line, color)
+        if command_line[0] == "S" and len(command_line) == 2:
+            filename = command_line[1]
+            write_image(matrix, filename)
     return True
