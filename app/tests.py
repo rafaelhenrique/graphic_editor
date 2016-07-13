@@ -47,3 +47,11 @@ class TestGraphicEditor:
             ['X'],
         ]
         assert app.execute_commands(parsed_commands)
+
+        with open('one.bmp', 'r', encoding="utf-8") as fp:
+            one = fp.read()
+        with open('two.bmp', 'r', encoding="utf-8") as fp:
+            two = fp.read()
+
+        assert one == 'OOOOO\nOOOOO\nOAOOO\nOOOOO\nOOOOO\nOOOOO\n'
+        assert two == 'OOOOO\nOOZZO\nOWOOO\nOWOOO\nOOOOO\nOOOOO\n'
