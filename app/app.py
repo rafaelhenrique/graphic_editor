@@ -22,6 +22,13 @@ def draw_vertical(matrix, column, y1, y2, color):
     matrix[y1:y2, column] = color
 
 
+def draw_horizontal(matrix, x1, x2, line, color):
+    line = int(line) - 1
+    x1 = int(x1) - 1
+    x2 = int(x2) - 1
+    matrix[line, x1:x2] = color
+
+
 def write_image(matrix, filename):
     np.savetxt(filename, matrix, delimiter="", fmt="%s")
 
@@ -61,4 +68,7 @@ def execute_commands(parsed_commands):
         if command_line[0] == "V" and len(command_line) == 5:
             column, y1, y2, color = command_line[1:]
             draw_vertical(matrix, column, y1, y2, color)
+        if command_line[0] == "H" and len(command_line) == 5:
+            x1, x2, line, color = command_line[1:]
+            draw_horizontal(matrix, x1, x2, line, color)
     return True
