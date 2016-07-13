@@ -18,14 +18,14 @@ def color_pixel(matrix, column, line, color):
 def draw_vertical(matrix, column, y1, y2, color):
     column = int(column) - 1
     y1 = int(y1) - 1
-    y2 = int(y2) - 1
+    y2 = int(y2)
     matrix[y1:y2, column] = color
 
 
 def draw_horizontal(matrix, x1, x2, line, color):
     line = int(line) - 1
     x1 = int(x1) - 1
-    x2 = int(x2) - 1
+    x2 = int(x2)
     matrix[line, x1:x2] = color
 
 
@@ -79,6 +79,7 @@ def execute_commands(parsed_commands):
             filename = command_line[1]
             write_image(matrix, filename)
         if command_line[0] == "V" and len(command_line) == 5:
+            import pytest; pytest.set_trace()
             column, y1, y2, color = command_line[1:]
             draw_vertical(matrix, column, y1, y2, color)
         if command_line[0] == "H" and len(command_line) == 5:
