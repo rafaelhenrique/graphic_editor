@@ -36,6 +36,7 @@ def read_command():
 
 
 def execute_commands(parsed_commands):
+    """Execute parsed commands to manipulate matrix"""
     for command_line in parsed_commands:
         if command_line[0] == "I" and len(command_line) == 3:
             columns, lines = command_line[1:]
