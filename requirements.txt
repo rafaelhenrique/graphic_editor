@@ -1,0 +1,5 @@
+pytest==2.9.2
+mock==2.0.0
+pytest-sugar==0.7.1
+pytest-cov==1.8.1
+numpy==1.11.1
