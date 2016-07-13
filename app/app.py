@@ -3,16 +3,10 @@ import numpy as np
 
 def create_matrix(columns=0, lines=0):
     """Create matrix columns x lines (m x n)"""
-    try:
-        columns = int(columns)
-        lines = int(lines)
-        line = ["O" for _ in range(columns)]
-        return np.array([line for _ in range(lines)])
-    except ValueError:
-        msg = ("Invalid values: columns={!r}, lines={!r}\n"
-               "Only integer values are accepted on create_matrix").format(
-               columns, lines)
-        print(msg)
+    columns = int(columns)
+    lines = int(lines)
+    line = ["O" for _ in range(columns)]
+    return np.array([line for _ in range(lines)])
 
 
 def read_command():
