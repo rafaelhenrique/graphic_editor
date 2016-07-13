@@ -33,3 +33,7 @@ class TestGraphicEditor:
                 ['L', '2', '3', 'A'],
                 ['X']
             ]
+
+    def test_execute_commands(self):
+        parsed_commands = [['I', '5', '6'], ['I', 'A', 'A']]
+        assert app.execute_commands(parsed_commands)
