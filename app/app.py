@@ -33,6 +33,19 @@ def write_image(matrix, filename):
     np.savetxt(filename, matrix, delimiter="", fmt="%s")
 
 
+def fill_region(matrix, column, line, color):
+    column = int(column) - 1
+    line = int(line) - 1
+
+    # columns > index
+    if (matrix[line][column] == matrix[:, column:]).all():
+        matrix[:, column:] = color
+
+    # columns < index
+    if (matrix[line][column] == matrix[:column, :]).all():
+        matrix[:column, ] = color
+
+
 def read_command():
     """Read commands and return parsed lines"""
     commands = []
@@ -71,4 +84,8 @@ def execute_commands(parsed_commands):
         if command_line[0] == "H" and len(command_line) == 5:
             x1, x2, line, color = command_line[1:]
             draw_horizontal(matrix, x1, x2, line, color)
+        if command_line[0] == "F" and len(command_line) == 4:
+            column, line, color = command_line[1:]
+            fill_region(matrix, column, line, color)
+
     return True
